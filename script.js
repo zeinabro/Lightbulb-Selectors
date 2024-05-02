@@ -17,20 +17,12 @@ function mouseOut(bulb){
     }
 }
 
-let bulb1 = document.querySelector("#lightbulb1");
-let bulb2 = document.querySelector("#lightbulb2");
-let bulb3 = document.querySelector("#lightbulb3");
 let count = 0;
 let subtitle = document.querySelector(".subtitle")
 
-bulb1.addEventListener("click", () => {toggleBulb(bulb1)});
-bulb2.addEventListener("click", () => {toggleBulb(bulb2)});
-bulb3.addEventListener("click", () => {toggleBulb(bulb3)});
-
-bulb1.addEventListener("mouseover", () => {mouseOver(bulb1)});
-bulb2.addEventListener("mouseover", () => {mouseOver(bulb2)});
-bulb3.addEventListener("mouseover", () => {mouseOver(bulb3)});
-
-bulb1.addEventListener("mouseout", () => {mouseOut(bulb1)});
-bulb2.addEventListener("mouseout", () => {mouseOut(bulb2)});
-bulb3.addEventListener("mouseout", () => {mouseOut(bulb3)});
+let bulbs = document.querySelectorAll(".lightbulb");
+bulbs.forEach(bulb => {
+    bulb.addEventListener("click", () => {toggleBulb(bulb)});
+    bulb.addEventListener("mouseover", () => {mouseOver(bulb)});
+    bulb.addEventListener("mouseout", () => {mouseOut(bulb)});
+})
