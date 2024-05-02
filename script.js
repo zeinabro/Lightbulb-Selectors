@@ -1,5 +1,6 @@
 // Write your code here
-function toggleBulb(bulb){
+function toggleBulb(event){
+    let bulb = event.target;
     console.log(bulb.id)
     if (bulb.id == "lightbulb1"){
         bulbs.forEach(bulb => {
@@ -13,13 +14,15 @@ function toggleBulb(bulb){
     subtitle.innerHTML = `You've clicked the lights ${count} time${count>1 ? "s":""}`;
 }
 
-function mouseOver(bulb){
+function mouseOver(event){
+    let bulb = event.target;
     if (!bulb.classList.contains("active")){
         bulb.classList.add("active")
     }
 }
 
-function mouseOut(bulb){
+function mouseOut(event){
+    let bulb = event.target;
     if (bulb.classList.contains("active")){
         bulb.classList.remove("active")
     }
@@ -30,7 +33,7 @@ let subtitle = document.querySelector(".subtitle")
 
 let bulbs = document.querySelectorAll(".lightbulb");
 bulbs.forEach(bulb => {
-    bulb.addEventListener("click", () => {toggleBulb(bulb)});
-    bulb.addEventListener("mouseover", () => {mouseOver(bulb)});
-    bulb.addEventListener("mouseout", () => {mouseOut(bulb)});
+    bulb.addEventListener("click", toggleBulb);
+    bulb.addEventListener("mouseover", mouseOver);
+    bulb.addEventListener("mouseout", mouseOut);
 })
